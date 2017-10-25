@@ -8,12 +8,18 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
+import { Phonebooks } from '../providers/phonebooks/phonebooks';
+import { Contacts } from '../providers/contacts/contacts';
+import { Globalvar } from '../providers/globalvar/globalvar';
+import { Contact } from '../providers/contact/contact';
+import { Phonebook } from '../providers/phonebook/phonebook';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -61,12 +67,18 @@ export function provideSettings(storage: Storage) {
     Api,
     Items,
     User,
+    HTTP,
     Camera,
     SplashScreen,
     StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Phonebooks,
+    Contacts,
+    Globalvar,
+    Contactr,
+    Phonebook
   ]
 })
 export class AppModule { }

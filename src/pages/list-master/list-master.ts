@@ -3,17 +3,28 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
+import { User } from '../../providers/providers';
+
 
 @IonicPage()
 @Component({
   selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  templateUrl: 'list-master.html',
+
 })
 export class ListMasterPage {
   currentItems: Item[];
+  cAccount: any;
+  a : any;
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items,  public currentUser: User,  public modalCtrl: ModalController) {
     this.currentItems = this.items.query();
+    
+    //this.currentUser.setAccountToDB("daff")
+    //this.a = this.currentUser.getAccountFromDB();
+    this.cAccount = this.currentUser.account;
+    
+    console.log(this.cAccount.name);
   }
 
   /**
